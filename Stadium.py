@@ -1,3 +1,4 @@
+
 class Stadium:
     """
     Class representing a stadium.
@@ -10,19 +11,19 @@ class Stadium:
         __away_team (str): The away team playing against the home team.
     """
 
-    instance = None
+    __instance = None
 
-    @staticmethod
-    def get_instance():
+    @classmethod
+    def get_instance(cls):
         """
         Get the instance of the Stadium class.
 
         Returns:
             Stadium: The instance of the Stadium class.
         """
-        if Stadium.instance is None:
-            Stadium.instance = Stadium()
-        return Stadium.instance
+        if cls.__instance is None:
+            cls.__instance = cls()
+        return cls.__instance
 
     def __init__(self, __name="", __capacity=0, __current_attandies=0, __home_team="", __away_team=""):
         """
