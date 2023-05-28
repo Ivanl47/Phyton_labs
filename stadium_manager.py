@@ -1,9 +1,9 @@
 import SuportedSports
 import abstract_stadium
-import Stadium
+import stadium
 import SwimmingPool
 import TenisCort
-import PaintBallArena
+import paintball_stadium
 from typing import List
 
 
@@ -24,3 +24,12 @@ class StadiumManager():
     def find_all_stdiums_with_capacity_more_than(self,count):
         stadiums_with_capacity = list(filter(lambda x:x.capacity > count,self.stadiums))
         return self.stadiums
+
+    def __len__(self):
+        return len(self.stadiums)
+
+    def __getitem__(self, index):
+        return self.sports[index]
+
+    def __iter__(self):
+        return iter(self.sports)

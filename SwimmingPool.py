@@ -1,8 +1,8 @@
-import AbstractStadium
+import abstract_stadium
 import SuportedSports
 
 
-class SwimmingPool(AbstractStadium):
+class SwimmingPool(abstract_stadium):
     """
     Class representing a swimming pool.
     Attributes:
@@ -15,7 +15,15 @@ class SwimmingPool(AbstractStadium):
         sports (list): The list of supported sports
     """
 
-    def __init__(self, __name="", __capacity=0, __current_attendance=0, __number_of_showers=0, __pool_volume_in_liters=0, __number_of_members=0, __sports=[SuportedSports] ):
+    def __init__(self,
+                 __name: str = "",
+                 __capacity: int = 0,
+                 __current_attendance: int = 0,
+                 __number_of_showers: int = 0,
+                 __pool_volume_in_liters: float = 0,
+                 __number_of_members: int = 0,
+                 __sports: list[SuportedSports] = ()
+                 ):
         self.name = __name
         self.capacity = __capacity
         self.current_attendance = __current_attendance
@@ -24,8 +32,10 @@ class SwimmingPool(AbstractStadium):
         self.number_of_members = __number_of_members
         self.sports = __sports
 
-        def get_supported_sports(self,sports):
-            """
-            """
-            self.__sports.append(sports)
-            return self.__sports
+    def get_supported_sports(self,sports):
+        """
+        """
+        self.__sports.append(sports)
+        return self.__sports
+
+
