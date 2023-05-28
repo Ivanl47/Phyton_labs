@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 import SuportedSports
 
 
-class AbstractStadium(ABC):
+class abstract_stadium(ABC):
     """
     Abstract Stadium
     Attributes:
