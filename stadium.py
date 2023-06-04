@@ -1,7 +1,8 @@
-from abstract_stadium import abstract_stadium
+from abstract_stadium import AbstractStadium
+import not_enough_seats_exeption
 
 
-class Stadium(abstract_stadium):
+class Stadium(AbstractStadium):
     """
     Class representing a stadium.
 
@@ -42,10 +43,11 @@ class Stadium(abstract_stadium):
         """
         self.__current_attendance += count
         if self.__current_attendance > self.__capacity:
-            excess = self.__current_attendance - self.__capacity
-            self.__current_attendance = self.__capacity
-            print(
-                f"Not enough seats in the stadium. Excess: {excess}. Attendance changed to {self.__current_attendance}.")
+            raise not_enough_seats_exeption
+            # excess = self.__current_attendance - self.__capacity
+            # self.__current_attendance = self.__capacity
+            # print(
+            #     f" in the stadium. Excess: {excess}. Attendance changed to {self.__current_attendance}.")
 
     def decrease_attendance(self):
         """
