@@ -1,5 +1,6 @@
 from abstract_stadium import AbstractStadium
 import not_enough_seats_exeption
+from stadium_manager import StadiumManager
 
 
 class Stadium(AbstractStadium):
@@ -14,7 +15,14 @@ class Stadium(AbstractStadium):
         __away_team (str): The away team playing against the home team.
     """
 
-    def __init__(self, __name="", __current_attendance=0, __capacity=0, __home_team="", __away_team="", __sports=[],__number_of_showers=0):
+    def __init__(self,
+                 __name="",
+                 __current_attendance=0,
+                 __capacity=0,
+                 __home_team="",
+                 __away_team="",
+                 __sports=[],
+                 __number_of_showers=0):
         """
         Initializes an instance of the Stadium class with the specified attributes.
 
@@ -34,6 +42,7 @@ class Stadium(AbstractStadium):
         self.__sports = __sports
         self.__number_of_showers = __number_of_showers
 
+    @logged
     def add_attendance(self, count):
         """
         Adds the specified number of attendees to the current attendance at the stadium.

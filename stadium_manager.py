@@ -5,6 +5,7 @@ import SwimmingPool
 import TenisCort
 import paintball_stadium
 from typing import List
+import logging
 
 
 class StadiumManager():
@@ -15,6 +16,25 @@ class StadiumManager():
 
     def add_stadium(self, stadium):
         self.sports.append(stadium)
+
+    def logged(exception, mode):
+        def decorator(func):
+            def wrapper(*args, **kwargs):
+                try:
+                    return func(*args, **kwargs)
+                except exception as e:
+                    if mode == "console":
+                        logging.basicConfig(level=logging.INFO)
+                        logging.error(f"Exception occurred: {e}")
+                    elif mode == "file":
+                        logging.basicConfig(filename="log.txt", level=logging.INFO)
+                        logging.error(f"Exception occurred: {e}")
+                    else:
+                        raise ValueError("Invalid logging mode.")
+
+            return wrapper
+
+        return decorator
 
     def find_all_stadiums_with_showers_more_than(self,number):
         stadiums_with_showers = all(self.number_of_showers > number for self.number_of_showers in self.stadiums)
