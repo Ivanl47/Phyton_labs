@@ -1,7 +1,9 @@
-from abstract_stadium import abstract_stadium
+from abstract_stadium import AbstractStadium
+import not_enough_seats_exeption
+from stadium_manager import StadiumManager
 
 
-class Stadium(abstract_stadium):
+class Stadium(AbstractStadium):
     """
     Class representing a stadium.
 
@@ -13,7 +15,14 @@ class Stadium(abstract_stadium):
         __away_team (str): The away team playing against the home team.
     """
 
-    def __init__(self, __name="", __current_attendance=0, __capacity=0, __home_team="", __away_team="", __sports=[],__number_of_showers=0):
+    def __init__(self,
+                 __name="",
+                 __current_attendance=0,
+                 __capacity=0,
+                 __home_team="",
+                 __away_team="",
+                 __sports=[],
+                 __number_of_showers=0):
         """
         Initializes an instance of the Stadium class with the specified attributes.
 
@@ -33,6 +42,7 @@ class Stadium(abstract_stadium):
         self.__sports = __sports
         self.__number_of_showers = __number_of_showers
 
+    @logged
     def add_attendance(self, count):
         """
         Adds the specified number of attendees to the current attendance at the stadium.
@@ -42,10 +52,11 @@ class Stadium(abstract_stadium):
         """
         self.__current_attendance += count
         if self.__current_attendance > self.__capacity:
-            excess = self.__current_attendance - self.__capacity
-            self.__current_attendance = self.__capacity
-            print(
-                f"Not enough seats in the stadium. Excess: {excess}. Attendance changed to {self.__current_attendance}.")
+            raise not_enough_seats_exeption
+            # excess = self.__current_attendance - self.__capacity
+            # self.__current_attendance = self.__capacity
+            # print(
+            #     f" in the stadium. Excess: {excess}. Attendance changed to {self.__current_attendance}.")
 
     def decrease_attendance(self):
         """
